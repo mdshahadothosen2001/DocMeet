@@ -46,7 +46,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin, CommonInfo):
     email = models.EmailField(max_length=255, unique=True, null=True, blank=True)
     class UserType(models.TextChoices):
         PATIENT = "PATIENT", "patient"
-        DOCTOR = "DOCTOR", "patient"
+        DOCTOR = "DOCTOR", "doctor"
 
     user_type = models.CharField(
         max_length=10, choices=UserType.choices, null=True, blank=True
