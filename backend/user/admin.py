@@ -75,7 +75,6 @@ class DoctorAdmin(admin.ModelAdmin):
         "marital_status",
         "emergency_contact",
         "qualification",
-        "specialization",
         "is_doctor",
         "is_active",
     )

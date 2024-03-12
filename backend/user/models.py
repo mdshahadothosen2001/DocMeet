@@ -7,6 +7,7 @@ from django.contrib.auth.models import (
 from django.db import models
 from django.utils.html import mark_safe
 
+from specialization.models import SpecializationModel
 from religion.models import ReligionModel
 from utils.utils import PHONE_REGEX
 from utils.models import CommonInfo
@@ -81,7 +82,9 @@ class UserAccount(AbstractBaseUser, PermissionsMixin, CommonInfo):
     nationality = models.CharField(max_length=255, null=True, blank=True)
     occupation = models.CharField(max_length=255, null=True, blank=True)
     qualification = models.CharField(max_length=255, null=True, blank=True)
-    specialization = models.CharField(max_length=255, null=True, blank=True)
+    specialization = models.ForeignKey(
+        SpecializationModel, on_delete=models.DO_NOTHING, null=True, blank=True
+    )
     profile_picture = models.ImageField(
         upload_to="images/uploads/%Y/%m/%d", null=True, blank=True
     )
