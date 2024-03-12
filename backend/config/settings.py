@@ -21,6 +21,7 @@ DJANGO_APPS = [
 LOCAL_APPS = [
     "utils",
     "country",
+    "religion",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
