@@ -9,11 +9,15 @@ class PatientProfileUpdateSerializer(serializers.ModelSerializer):
         model = UserAccount
         fields = [
             "id",
+            "email",
             "first_name", 
-            "last_name", 
+            "last_name",
+            "emergency_contact", 
             "gender", 
             "blood_group", 
             "date_of_birth", 
             "religion", 
             "marital_status",
+            "nationality", 
+            "occupation",
             ]

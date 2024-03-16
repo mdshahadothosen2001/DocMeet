@@ -13,6 +13,6 @@ urlpatterns = [
     path(route="login/", view=MyTokenObtainPairView.as_view(), name="patient_login"),
     # GET: localhost:8000/api/patient/profile/
     path(route="profile/", view=PatientProfileView.as_view(), name="patient_profile"),
-    # GET: localhost:8000/api/patient/profile/update/
-    path(route="profile/update/", view=PatientUpdateProfileView.as_view(), name="patient_profile"),
+    # PATCH: localhost:8000/api/patient/profile/update/
+    path(route="profile/update/", view=PatientUpdateProfileView.as_view(), name="patient_profile_update"),
 ]

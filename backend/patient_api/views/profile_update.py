@@ -1,3 +1,4 @@
+from rest_framework.status import HTTP_200_OK, HTTP_304_NOT_MODIFIED
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
@@ -23,5 +24,5 @@ class PatientUpdateProfileView(APIView):
             serializer = PatientProfileUpdateSerializer(instance=patient, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
-                return Response({"message": "successfully update your profile"})
-        return Response({"message": "Incomplete update process"})
+                return Response({"message": "successfully update your profile"}, status=HTTP_200_OK)
+        return Response({"message": "Incomplete update process"}, status=HTTP_304_NOT_MODIFIED)
