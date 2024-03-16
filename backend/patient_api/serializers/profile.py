@@ -10,11 +10,15 @@ class PatientProfileSerializer(serializers.ModelSerializer):
         fields = [
             "id", 
             "phone_number", 
-            "email", "first_name", 
-            "last_name", 
+            "email",
+            "first_name", 
+            "last_name",
+            "emergency_contact", 
             "gender", 
             "blood_group", 
             "date_of_birth", 
             "religion", 
             "marital_status",
+            "nationality", 
+            "occupation",
             ]
