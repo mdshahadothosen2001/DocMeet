@@ -3,9 +3,12 @@ from django.urls import path
 from .views.token import MyTokenObtainPairView
 from .views.profile import DoctorProfileView
 from .views.profile_update import DoctorUpdateProfileView
+from .views.register import UserRegistrationView
 
 
 urlpatterns = [
+    # POST: localhost:8000/api/doctor/register/
+    path(route="register/", view=UserRegistrationView.as_view(), name="doctor_register"),
     # POST: localhost:8000/api/doctor/login/
     path(route="login/", view=MyTokenObtainPairView.as_view(), name="doctor_login"),
     # GET: localhost:8000/api/doctor/profile/
