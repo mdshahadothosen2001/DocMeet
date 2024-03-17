@@ -6,7 +6,7 @@ from utils.utils import tokenValidation
 class IsPatient(BasePermission):
     def has_permission(self, request, view):
         payload = tokenValidation(request)
-        if payload and payload.get("is_doctor", True):
+        if payload and payload.get("is_doctor") is False:
             return True
         else:
             False
@@ -15,7 +15,7 @@ class IsPatient(BasePermission):
 class IsDoctor(BasePermission):
     def has_permission(self, request, view):
         payload = tokenValidation(request)
-        if payload and payload.get("is_doctor", False):
+        if payload and payload.get("is_doctor") is True:
             return True
         else:
             False
