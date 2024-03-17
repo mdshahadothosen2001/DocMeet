@@ -5,12 +5,13 @@ from rest_framework.views import APIView
 
 from ..serializers.book import BookAppointmentSerializer
 from book_appointment.models import BookAppointmentModel
+from utils.custom_permission import IsPatient
 
 
 class BookAppointmentView(APIView):
     """User can book any appointment."""
 
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsPatient]
 
     def validate_parameter(self, patient_id, appointment_id):
         if patient_id and appointment_id:

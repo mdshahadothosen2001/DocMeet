@@ -1,18 +1,17 @@
 from rest_framework.status import HTTP_200_OK, HTTP_304_NOT_MODIFIED
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
 
 from user.models import UserAccount
 from utils.utils import tokenValidation
-
+from utils.custom_permission import IsPatient
 from ..serializers.profile_update import PatientProfileUpdateSerializer
 
 
 class PatientUpdateProfileView(APIView):
     """User can update their profile information"""
 
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsPatient]
 
     def patch(self, request, *args, **kwargs):
 
