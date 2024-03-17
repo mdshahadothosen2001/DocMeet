@@ -10,7 +10,7 @@ SECRET_KEY = "django-insecure-gi^=3xf3uhji_agc*f$gsdz2maoj$*k*&%l+89@i%bd*vh)-f0
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "yourmailsender.pythonanywhere.com"]
 
 DJANGO_APPS = [
     "django.contrib.admin",
