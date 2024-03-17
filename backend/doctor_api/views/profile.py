@@ -3,16 +3,15 @@ from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
 
 from user.models import UserAccount
 from utils.utils import tokenValidation
-
+from utils.custom_permission import IsDoctor
 from ..serializers.profile import DoctorProfileSerializer
 
 
 class DoctorProfileView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsDoctor]
 
     def get(self, request):
         doctor = get_object_or_404(
