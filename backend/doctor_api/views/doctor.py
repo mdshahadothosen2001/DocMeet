@@ -11,6 +11,9 @@ class DoctorListView(APIView):
     permission_classes = [AllowAny]
 
     def get(self, request):
-        doctor = Doctor.objects.values()
-        serializer = DoctorListSerializer(doctor, many=True)
+        specialized_id = request.query_params.get("specialized_id")
+        doctors = Doctor.objects.values()
+        if specialized_id:
+            doctors = doctors.filter(specialization=specialized_id)
+        serializer = DoctorListSerializer(doctors, many=True)
         return Response(serializer.data, status=HTTP_200_OK)
