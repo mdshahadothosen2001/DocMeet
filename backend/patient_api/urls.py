@@ -1,4 +1,5 @@
 from django.urls import path
+from rest_framework_simplejwt.views import TokenRefreshView
 
 from .views.token import MyTokenObtainPairView
 from .views.register import UserRegistrationView
@@ -15,4 +16,6 @@ urlpatterns = [
     path(route="profile/", view=PatientProfileView.as_view(), name="patient_profile"),
     # PATCH: localhost:8000/api/patient/profile/update/
     path(route="profile/update/", view=PatientUpdateProfileView.as_view(), name="patient_profile_update"),
+    # POST: localhost:8000/api/patient/token/refresh/
+    path(route="token/refresh/", view=TokenRefreshView.as_view(), name="token_refresh"),
 ]
