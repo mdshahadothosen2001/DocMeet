@@ -13,6 +13,7 @@ class PatientProfileSerializer(serializers.ModelSerializer):
             "email",
             "first_name", 
             "last_name",
+            "profile_picture",
             "emergency_contact", 
             "gender", 
             "blood_group", 
