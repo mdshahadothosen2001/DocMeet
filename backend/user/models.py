@@ -86,7 +86,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin, CommonInfo):
         SpecializationModel, on_delete=models.DO_NOTHING, null=True, blank=True
     )
     profile_picture = models.ImageField(
-        upload_to="images/uploads/%Y/%m/%d", null=True, blank=True
+        upload_to="images/users/%Y/%m/%d", null=True, blank=True
     )
     is_admin = models.BooleanField(default=False)
     is_patient = models.BooleanField(default=False)
