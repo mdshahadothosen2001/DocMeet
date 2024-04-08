@@ -10,7 +10,12 @@ class DoctorDetailSerializer(serializers.ModelSerializer):
         model = UserAccount
         fields = [
             "id",
-            "first_name", 
+            "first_name",
+            "last_name", 
+            "gender",
+            "qualification",
+            "specialization",
+            "profile_picture",
         ]
     
 class AppointmentListSerializer(serializers.ModelSerializer):
