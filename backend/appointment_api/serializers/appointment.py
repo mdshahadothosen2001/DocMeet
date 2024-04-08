@@ -17,10 +17,18 @@ class DoctorDetailSerializer(serializers.ModelSerializer):
             "specialization",
             "profile_picture",
         ]
+
+class CustomTimeField(serializers.TimeField):
+    def to_representation(self, value):
+        if not value:
+            return None
+        return value.strftime('%I:%M %p')
     
 class AppointmentListSerializer(serializers.ModelSerializer):
 
     doctor_detail = DoctorDetailSerializer(source='doctor', read_only=True)
+    start_time = CustomTimeField()
+    end_time = CustomTimeField()
 
     class Meta:
         model = AppointmentModel
