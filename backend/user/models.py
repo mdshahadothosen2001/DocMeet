@@ -88,6 +88,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin, CommonInfo):
     profile_picture = models.ImageField(
         upload_to="images/users/%Y/%m/%d", null=True, blank=True
     )
+    picture = models.URLField(null=True, blank=True)
     is_admin = models.BooleanField(default=False)
     is_patient = models.BooleanField(default=False)
     is_doctor = models.BooleanField(default=False)

@@ -14,6 +14,7 @@ class PatientProfileSerializer(serializers.ModelSerializer):
             "first_name", 
             "last_name",
             "profile_picture",
+            "picture",
             "emergency_contact", 
             "gender", 
             "blood_group", 
