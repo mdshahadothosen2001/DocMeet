@@ -130,6 +130,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "http://doc-meet-lime.vercel.app",
 ]
 
 CORS_ALLOW_HEADERS = [
