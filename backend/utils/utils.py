@@ -3,7 +3,7 @@ from django.core.validators import RegexValidator
 import jwt
 from rest_framework.authentication import get_authorization_header
 
-from config.JWT_SETTINGS import JWT_SETTINGS
+from config.jwt_settings import JWT_SETTINGS
 
 PHONE_REGEX = RegexValidator(
     regex=r"^01[13-9]\d{8}$",
