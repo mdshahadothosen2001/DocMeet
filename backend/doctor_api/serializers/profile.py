@@ -9,11 +9,13 @@ class DoctorProfileSerializer(serializers.ModelSerializer):
         model = UserAccount
         fields = [
             "id",
-            "phone_number",
+            "phone_number", 
             "email",
             "first_name", 
-            "last_name", 
+            "last_name",
+            "picture",
             "gender",
+            "nationality",
             "qualification",
             "specialization",
             ]
