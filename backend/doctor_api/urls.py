@@ -5,6 +5,7 @@ from .views.profile import DoctorProfileView
 from .views.profile_update import DoctorUpdateProfileView
 from .views.register import UserRegistrationView
 from .views.doctor import DoctorListView
+from .views.create_specialization import CreateSpecializationView
 
 
 urlpatterns = [
@@ -18,4 +19,6 @@ urlpatterns = [
     path(route="profile/update/", view=DoctorUpdateProfileView.as_view(), name="doctor_profile_update"),
     # GET: localhost:8000/api/doctor/list/
     path(route="list/", view=DoctorListView.as_view(), name="doctor_list"),
+    # POST: localhost:8000/api/doctor/specialized/create/
+    path(route="specialization/create/", view=CreateSpecializationView.as_view(), name="specialization"),
 ]
