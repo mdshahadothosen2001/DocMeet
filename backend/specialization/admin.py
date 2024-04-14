@@ -1,20 +1,19 @@
 from django.contrib import admin
-from django.utils.html import format_html
+from django.utils.html import mark_safe
 
 from .models import SpecializationModel
 
 
 class SpecializationAdmin(admin.ModelAdmin):
-    def image_display(self, obj):
-        if obj.image:
-            return format_html('<img src="{}" style="max-height: 200px; max-width: 200px;" />', obj.image.url)
-        else:
-            return "No Image"
+    def display_picture(self, obj):
+        return mark_safe('<img src="%s" style="max-width:100px; max-height:100px;" />' % obj.picture)
+    display_picture.allow_tags = True
+    display_picture.short_description = 'Picture'
     
     list_display = (
         "id",
         "specialized_name",
-        "image_display",
+        "display_picture",
     )
     list_display_links = ("specialized_name",)
     search_fields = ("specialized_name",)
