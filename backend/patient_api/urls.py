@@ -17,8 +17,8 @@ urlpatterns = [
     path(route="register/", view=UserRegistrationView.as_view(), name="patient_register"),
     # POST: localhost:8000/api/patient/login/
     path(route="login/", view=MyTokenObtainPairView.as_view(), name="patient_login"),
-    # POST: localhost:8000/api/patient/token/refresh/
-    path(route="token/refresh/", view=TokenRefreshView.as_view(), name="token_refresh"),
+    # POST: localhost:8000/api/patient/login/refresh/
+    path(route="login/refresh/", view=TokenRefreshView.as_view(), name="login_refresh"),
     # GET: localhost:8000/api/patient/profile/
     path(route="profile/", view=PatientProfileView.as_view(), name="patient_profile"),
     # PATCH: localhost:8000/api/patient/profile/update/
@@ -29,6 +29,6 @@ urlpatterns = [
     path("specialization-list/", SpecializationView.as_view(), name="specializations"),
     # GET: localhost:8000/api/patient/appointment-list/
     path(route="appointment-list/", view=AppointmentListView.as_view(), name="appointment_list"),
-    # POST: localhost:8000/api/patient/appointment-book/?id=1
+    # POST: localhost:8000/api/patient/appointment-book/
     path(route="appointment-book/", view=BookAppointmentView.as_view(), name="appointment_book"),
 ]

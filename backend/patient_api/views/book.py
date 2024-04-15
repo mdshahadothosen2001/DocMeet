@@ -21,8 +21,7 @@ class BookAppointmentView(APIView):
 
     def post(self, request, *args, **kwargs):
         patient_id = request.user.id
-        appointment_id = request.query_params.get("id")
-        print("....................................", patient_id, appointment_id)
+        appointment_id = request.data.get("id")
 
         if self.validate_parameter(patient_id, appointment_id) is True:
             book_instance = BookAppointmentModel.objects.filter(appointment=appointment_id).exists()
