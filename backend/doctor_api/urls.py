@@ -36,7 +36,7 @@ urlpatterns = [
     path(route="appointment-create/", view=CreateAppointmentView.as_view(), name="appointment_create"),
     # GET: localhost:8000/api/doctor/book-list/
     path(route="book-list/", view=BookAppointmentListView.as_view(), name="book_list"),
-    # PATCH: localhost:8000/api/doctor/book-confirm/?id=1
+    # PATCH: localhost:8000/api/doctor/book-confirm/
     path(route="book-confirm/", view=BookConfirmView.as_view(), name="book_confirm"),
     # DELETE: localhost:8000/api/doctor/book-delete/1/
     path(route="book-delete/<int:pk>/", view=BookDeleteView.as_view(), name="book_delete"),

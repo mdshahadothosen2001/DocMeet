@@ -12,7 +12,7 @@ class DoctorListView(APIView):
 
     def validate_parameter(self, id):
         if id:
-            return id.isdigit()
+            return True
         else:
             return False
     

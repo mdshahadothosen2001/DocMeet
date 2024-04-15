@@ -16,13 +16,13 @@ class BookConfirmView(APIView):
 
     def validate_parameter(self, id):
         if id:
-            return id.isdigit()
+            return True
         else:
             return False
         
     def patch(self, request, *args, **kwargs):
 
-        book_id = request.query_params.get("id")
+        book_id = request.data.get("id")
         if self.validate_parameter(book_id) is True:
             book_instance = get_object_or_404(BookAppointmentModel, id=book_id)
             serializer =  BookConfirmSerializer(instance=book_instance, data={"is_complete":True})
