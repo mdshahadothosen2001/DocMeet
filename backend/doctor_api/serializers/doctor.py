@@ -7,7 +7,7 @@ from specialization.models import SpecializationModel
 class SpecializationSerializer(serializers.ModelSerializer):
     class Meta:
         model = SpecializationModel
-        fields = ["specialized_name"]
+        fields = ["name"]
 
 class DoctorListSerializer(serializers.ModelSerializer):
     specialization = serializers.SerializerMethodField()

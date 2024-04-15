@@ -5,7 +5,6 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 from django.db import models
-from django.utils.html import mark_safe
 
 from specialization.models import SpecializationModel
 from religion.models import ReligionModel
@@ -72,7 +71,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin, CommonInfo):
     )
 
     class MaritalStatus(models.TextChoices):
-        SINGLE = "SINGLE", "single"
+        UNMARRIED = "UNMARRIED", "unmarried"
         MARRIED = "MARRIED", "married"
         OTHERS = "OTHERS", "others"
 
@@ -85,9 +84,6 @@ class UserAccount(AbstractBaseUser, PermissionsMixin, CommonInfo):
     specialization = models.ForeignKey(
         SpecializationModel, on_delete=models.DO_NOTHING, null=True, blank=True
     )
-    profile_picture = models.ImageField(
-        upload_to="images/users/%Y/%m/%d", null=True, blank=True
-    )
     picture = models.URLField(null=True, blank=True)
     is_admin = models.BooleanField(default=False)
     is_patient = models.BooleanField(default=False)
@@ -98,14 +94,6 @@ class UserAccount(AbstractBaseUser, PermissionsMixin, CommonInfo):
     USERNAME_FIELD = "phone_number"
 
     objects = UserAccountManager()
-
-    def profile_image(self):
-        if self.profile_picture != "":
-            return mark_safe(
-                '<img src="{}{}" width=auto height="20" />'.format(
-                    f"{settings.MEDIA_URL}", self.profile_picture
-                )
-            )
 
     def __str__(self):
         return self.phone_number

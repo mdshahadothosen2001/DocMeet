@@ -12,11 +12,11 @@ class SpecializationAdmin(admin.ModelAdmin):
     
     list_display = (
         "id",
-        "specialized_name",
+        "name",
         "display_picture",
     )
-    list_display_links = ("specialized_name",)
-    search_fields = ("specialized_name",)
+    list_display_links = ("name",)
+    search_fields = ("name",)
     list_per_page = 25
 
 

@@ -1,9 +1,15 @@
 from django.contrib import admin
+from django.utils.html import mark_safe
 
 from user.models import Patient, UserAccount, Doctor
 
 
 class UserAccountAdmin(admin.ModelAdmin):
+    def display_picture(self, obj):
+        return mark_safe('<img src="%s" style="max-width:100px; max-height:100px;" />' % obj.picture)
+    display_picture.allow_tags = True
+    display_picture.short_description = 'Picture'
+
     list_display = (
         "phone_number",
         "email",
@@ -16,7 +22,7 @@ class UserAccountAdmin(admin.ModelAdmin):
         "marital_status",
         "nationality",
         "emergency_contact",
-        "profile_image",
+        "display_picture",
         "is_active",
         "is_admin",
         "is_patient",
@@ -29,7 +35,7 @@ class UserAccountAdmin(admin.ModelAdmin):
         "email",
         "first_name",
         "last_name",
-        "profile_image",
+        "display_picture",
     )
     search_fields = (
         "phone_number",
@@ -39,6 +45,11 @@ class UserAccountAdmin(admin.ModelAdmin):
 
 
 class PatientAdmin(admin.ModelAdmin):
+    def display_picture(self, obj):
+        return mark_safe('<img src="%s" style="max-width:100px; max-height:100px;" />' % obj.picture)
+    display_picture.allow_tags = True
+    display_picture.short_description = 'Picture'
+
     list_display = (
         "id",
         "phone_number",
@@ -48,7 +59,7 @@ class PatientAdmin(admin.ModelAdmin):
         "gender",
         "blood_group",
         "emergency_contact",
-        "profile_image",
+        "display_picture",
         "religion",
         "occupation",
         "is_patient",
@@ -66,6 +77,11 @@ class PatientAdmin(admin.ModelAdmin):
 
 
 class DoctorAdmin(admin.ModelAdmin):
+    def display_picture(self, obj):
+        return mark_safe('<img src="%s" style="max-width:100px; max-height:100px;" />' % obj.picture)
+    display_picture.allow_tags = True
+    display_picture.short_description = 'Picture'
+    
     list_display = (
         "id",
         "phone_number",
@@ -75,7 +91,7 @@ class DoctorAdmin(admin.ModelAdmin):
         "gender",
         "marital_status",
         "emergency_contact",
-        "profile_image",
+        "display_picture",
         "qualification",
         "is_doctor",
         "is_active",
