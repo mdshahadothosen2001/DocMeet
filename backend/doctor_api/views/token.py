@@ -13,6 +13,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         """Used to get token and set user data"""
 
         token = super().get_token(user)
+        token["id"] = user.id
         token["phone_number"] = user.phone_number
         token["email"] = user.email
         token["first_name"] = user.first_name
