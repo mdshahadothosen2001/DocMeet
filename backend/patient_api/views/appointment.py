@@ -12,7 +12,7 @@ class AppointmentListView(APIView):
     permission_classes = [AllowAny]
 
     def get(self, request):
-        specialized_id = request.query_params.get("specialized_id")
+        specialized_id = request.query_params.get("id")
         doctors = Doctor.objects.values()
         if specialized_id:
             doctors = doctors.filter(specialization=specialized_id)
