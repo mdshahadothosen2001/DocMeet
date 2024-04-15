@@ -41,6 +41,7 @@ LOCAL_APPS = [
     "doctor_api",
     "appointment_api",
     "category_api",
+    "admin_api",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
