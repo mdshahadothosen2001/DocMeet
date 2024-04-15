@@ -6,4 +6,4 @@ from specialization.models import SpecializationModel
 class SpecializationSerializer(serializers.ModelSerializer):
     class Meta:
         model = SpecializationModel
-        fields = ["id", "name", "image",]
+        fields = ["id", "name", "picture",]

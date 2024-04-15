@@ -39,8 +39,6 @@ LOCAL_APPS = [
     "book_appointment",
     "patient_api",
     "doctor_api",
-    "appointment_api",
-    "category_api",
     "admin_api",
 ]
 

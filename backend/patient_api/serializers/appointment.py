@@ -15,7 +15,7 @@ class DoctorDetailSerializer(serializers.ModelSerializer):
             "gender",
             "qualification",
             "specialization",
-            "profile_picture",
+            "picture",
         ]
 
 class CustomTimeField(serializers.TimeField):

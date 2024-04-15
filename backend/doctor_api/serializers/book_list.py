@@ -12,6 +12,7 @@ class DoctorDetailSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "first_name", 
+            "last_name", 
         ]
     
 class AppointmentListSerializer(serializers.ModelSerializer):
@@ -36,7 +37,9 @@ class PatientDetailSerializer(serializers.ModelSerializer):
         model = UserAccount
         fields = [
             "id",
-            "first_name", 
+            "first_name",
+            "last_name",
+            "phone_number",
         ]
     
 class BookAppointmentListSerializer(serializers.ModelSerializer):

@@ -17,10 +17,11 @@ class CreateReligionView(APIView):
             return False
     
     def post(self, request, *args, **kwargs):
-        religion_name = request.data.get("name")
-        if self.validate_parameter(religion_name) is True:
+        name = request.data.get("name")
+        if self.validate_parameter(name) is True:
             serializer = CreateReligionSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()
-                return Response({"output":True, "message":"Successfully created religion"}, status=status.HTTP_201_CREATED)
-        return Response({"output":False, "message":"Unuccessfully the religion creation process"}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({"output":True, "message":"Successful in creating a religion."}, status=status.HTTP_201_CREATED)
+            
+        return Response({"output":False, "message":"Unsuccessful in creating a religion."}, status=status.HTTP_400_BAD_REQUEST)

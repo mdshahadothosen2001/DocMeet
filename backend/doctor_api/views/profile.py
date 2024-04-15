@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404
 
-from rest_framework.response import Response
-from rest_framework.status import HTTP_200_OK
 from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
 from user.models import UserAccount
 from utils.utils import tokenValidation
@@ -18,4 +18,4 @@ class DoctorProfileView(APIView):
             UserAccount, phone_number=tokenValidation(request)["phone_number"]
         )
         serializer = DoctorProfileSerializer(doctor)
-        return Response(serializer.data, status=HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)

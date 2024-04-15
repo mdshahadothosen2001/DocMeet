@@ -1,7 +1,6 @@
-from rest_framework.response import Response
-from rest_framework.status import HTTP_200_OK
 from rest_framework.views import APIView
-from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+from rest_framework import status
 
 from book_appointment.models import BookAppointmentModel
 from utils.custom_permission import IsDoctor
@@ -14,4 +13,4 @@ class BookAppointmentListView(APIView):
     def get(self, request):
         books =BookAppointmentModel.objects.all()
         serializer = BookAppointmentListSerializer(books, many=True)
-        return Response(serializer.data, status=HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)

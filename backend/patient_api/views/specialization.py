@@ -4,7 +4,7 @@ from rest_framework.status import HTTP_200_OK
 from rest_framework.views import APIView
 
 from specialization.models import SpecializationModel
-from ..serializers.category import SpecializationSerializer
+from ..serializers.specialization import SpecializationSerializer
 
 
 class SpecializationView(APIView):

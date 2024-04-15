@@ -1,7 +1,7 @@
-from rest_framework.status import HTTP_201_CREATED, HTTP_400_BAD_REQUEST
-from rest_framework.permissions import AllowAny
-from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.permissions import AllowAny
 
 from django.db.models import Q
 
@@ -34,7 +34,7 @@ class UserRegistrationView(APIView):
 
         if self.validate_parameter(phone_number, email, password) is True:
             if self.have_account(phone_number, email) is True:
-                return Response({"message":"You have already account at DocMeet"}, status=HTTP_400_BAD_REQUEST)
+                return Response({"message":"You have already account at DocMeet"}, status=status.HTTP_400_BAD_REQUEST)
             user_data = {
                 "phone_number": phone_number,
                 "email": email,
@@ -47,6 +47,6 @@ class UserRegistrationView(APIView):
             if serializer.is_valid():
                 serializer.save()
 
-                return Response({"message":"Completed your registration process!"}, status=HTTP_201_CREATED)
+                return Response({"output":True, "message":"Completed your registration process!"}, status=status.HTTP_201_CREATED)
 
-        return Response({"message":"Incompleted registration! Please provide valid data"}, status=HTTP_400_BAD_REQUEST)
+        return Response({"output":False, "message":"Incompleted registration! Please provide valid data"}, status=status.HTTP_400_BAD_REQUEST)
