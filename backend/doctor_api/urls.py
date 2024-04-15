@@ -13,6 +13,7 @@ from .views.book_confirm import BookConfirmView
 from .views.book_delete import BookDeleteView
 from .views.profile_update import DoctorUpdateProfileView
 from .views.create_address import CreateAddressView
+from .views.create_country import CreateCountryView
 
 
 
@@ -43,4 +44,6 @@ urlpatterns = [
     path(route="book-delete/<int:pk>/", view=BookDeleteView.as_view(), name="book_delete"),
     # POST: localhost:8000/api/doctor/address-create/
     path(route="address-create/", view=CreateAddressView.as_view(), name="address_create"),
+    # POST: localhost:8000/api/doctor/country-create/
+    path(route="country-create/", view=CreateCountryView.as_view(), name="country_create")
 ]
