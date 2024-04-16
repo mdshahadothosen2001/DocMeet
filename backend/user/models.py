@@ -7,7 +7,6 @@ from django.contrib.auth.models import (
 from django.db import models
 
 from specialization.models import SpecializationModel
-from religion.models import ReligionModel
 from utils.utils import PHONE_REGEX
 from utils.models import CommonInfo
 

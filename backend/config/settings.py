@@ -29,12 +29,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "utils",
-    "country",
-    "religion",
-    "address",
     "specialization",
     "user",
-    "user_address",
     "appointment",
     "book_appointment",
     "patient_api",

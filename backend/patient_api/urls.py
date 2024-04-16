@@ -10,8 +10,6 @@ from .views.doctor_list import DoctorListView
 from .views.specialization import SpecializationView
 from .views.appointment import AppointmentListView
 from .views.book import BookAppointmentView
-from .views.create_address import CreateAddressView
-from .views.address import AddressView
 
 
 urlpatterns = [
@@ -33,8 +31,4 @@ urlpatterns = [
     path(route="appointment-list/", view=AppointmentListView.as_view(), name="appointment_list"),
     # POST: localhost:8000/api/patient/appointment-book/
     path(route="appointment-book/", view=BookAppointmentView.as_view(), name="appointment_book"),
-    # POST: localhost:8000/api/patient/address-create/
-    path(route="address-create/", view=CreateAddressView.as_view(), name="address_create"),
-    # GET: localhost:8000/api/patient/address/
-    path(route="address/", view=AddressView.as_view(), name="patient_address"),
 ]
