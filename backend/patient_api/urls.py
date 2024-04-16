@@ -12,6 +12,7 @@ from .views.appointment import AppointmentListView
 from .views.book import BookAppointmentView
 from .views.create_address import CreateAddressView
 from .views.country import CountryListView
+from .views.religion import ReligionListView
 
 
 urlpatterns = [
@@ -37,4 +38,6 @@ urlpatterns = [
     path(route="address-create/", view=CreateAddressView.as_view(), name="address_create"),
     # GET: localhost:8000/api/patient/country-list/
     path(route="country-list/", view=CountryListView.as_view(), name="country_list"),
+    # GET: localhost:8000/api/patient/religion-list/
+    path(route="religion-list/", view=ReligionListView.as_view(), name="religion_list"),
 ]
