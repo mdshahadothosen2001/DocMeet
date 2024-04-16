@@ -3,7 +3,6 @@ from rest_framework_simplejwt.views import TokenRefreshView
 
 from .views.register import UserRegistrationView
 from .views.token import CustomTokenObtainPairView
-from .views.create_religion import CreateReligionView
 from .views.create_specialization import CreateSpecializationView
 from .views.create_appointment import CreateAppointmentView
 from .views.doctor import DoctorListView
@@ -13,7 +12,6 @@ from .views.book_confirm import BookConfirmView
 from .views.book_delete import BookDeleteView
 from .views.profile_update import DoctorUpdateProfileView
 from .views.create_address import CreateAddressView
-from .views.create_country import CreateCountryView
 from .views.doctor_detail import DoctorDetailForPatient
 
 
@@ -31,8 +29,6 @@ urlpatterns = [
     path(route="profile/update/", view=DoctorUpdateProfileView.as_view(), name="doctor_profile_update"),
     # GET: localhost:8000/api/doctor/list/
     path(route="list/", view=DoctorListView.as_view(), name="doctor_list"),
-    # POST: localhost:8000/api/doctor/religion/create/
-    path(route="religion/create/", view=CreateReligionView.as_view(), name="religion_create"),
     # POST: localhost:8000/api/doctor/specialized/create/
     path(route="specialization/create/", view=CreateSpecializationView.as_view(), name="specialization_create"),
     # POST: localhost:8000/api/doctor/appointment-create/
@@ -45,8 +41,6 @@ urlpatterns = [
     path(route="book-delete/<int:pk>/", view=BookDeleteView.as_view(), name="book_delete"),
     # POST: localhost:8000/api/doctor/address-create/
     path(route="address-create/", view=CreateAddressView.as_view(), name="address_create"),
-    # POST: localhost:8000/api/doctor/country-create/
-    path(route="country-create/", view=CreateCountryView.as_view(), name="country_create"),
     # GETT: localhost:8000/api/doctor/detail/
     path(route="detail/", view=DoctorDetailForPatient.as_view(), name="doctor_detail_for_patient"),
 ]
