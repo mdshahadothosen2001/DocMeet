@@ -4,9 +4,6 @@ from .models import AddressModel
 
 
 class AddressAdmin(admin.ModelAdmin):
-    def country(self, obj):
-        return obj.country.country_name
-    
     list_display = (
         "id",
         "unit_number",

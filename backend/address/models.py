@@ -11,7 +11,7 @@ class AddressModel(models.Model):
     city = models.CharField(max_length=100)
     region = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=100)
-    country = models.ForeignKey(CountryModel, on_delete=models.DO_NOTHING)
+    country = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return self.address_line1

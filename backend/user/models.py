@@ -66,9 +66,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin, CommonInfo):
     )
     date_of_birth = models.DateField(null=True, blank=True)
     blood_group = models.CharField(max_length=255, null=True, blank=True)
-    religion = models.ForeignKey(
-        ReligionModel, on_delete=models.DO_NOTHING, null=True, blank=True
-    )
+    religion = models.CharField(max_length=255, null=True, blank=True)
 
     class MaritalStatus(models.TextChoices):
         UNMARRIED = "UNMARRIED", "unmarried"
