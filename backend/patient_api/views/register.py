@@ -40,6 +40,7 @@ class UserRegistrationView(APIView):
                 "email": email,
                 "password": password,
                 "user_type":"PATIENT",
+                "picture":"https://th.bing.com/th/id/OIP.yrcccITY9EV61-oPZHE3qAHaHw?rs=1&pid=ImgDetMain",
                 "is_patient":True,
             }
 
