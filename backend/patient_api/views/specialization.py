@@ -11,6 +11,6 @@ class SpecializationView(APIView):
     permission_classes = [AllowAny]
 
     def get(self, request):
-        specializations = SpecializationModel.objects.all()
+        specializations = SpecializationModel.objects.filter(is_active=True).order_by("ordering_id")
         serializer = SpecializationSerializer(specializations, many=True)
         return Response(serializer.data, status=HTTP_200_OK)
