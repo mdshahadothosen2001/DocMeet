@@ -1,9 +1,12 @@
+from django.shortcuts import get_object_or_404
+
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 
 from user.models import Doctor
+from specialization.models import SpecializationModel
 from ..serializers.doctor_list import DoctorListSerializer
 
 
@@ -14,6 +17,8 @@ class DoctorListView(APIView):
         specialized_id = request.query_params.get("specialized_id")
         doctors = Doctor.objects.values()
         if specialized_id:
-            doctors = doctors.filter(specialization=specialized_id)
+            specialization = get_object_or_404(SpecializationModel, id=specialized_id)
+            if specialization.name not in ["All", "all", "ALL"]:
+                doctors = doctors.filter(specialization=specialized_id)
         serializer = DoctorListSerializer(doctors, many=True)
         return Response(serializer.data, status=HTTP_200_OK)
