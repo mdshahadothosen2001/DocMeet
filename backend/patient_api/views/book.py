@@ -1,10 +1,10 @@
 from rest_framework.status import HTTP_202_ACCEPTED, HTTP_400_BAD_REQUEST
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from ..serializers.book import BookAppointmentSerializer
 from book_appointment.models import BookAppointmentModel
+from appointment.models import AppointmentModel
 from utils.custom_permission import IsPatient
 
 
@@ -26,6 +26,9 @@ class BookAppointmentView(APIView):
         if self.validate_parameter(patient_id, appointment_id) is True:
             book_instance = BookAppointmentModel.objects.filter(appointment=appointment_id).exists()
             if book_instance is False:
+                appointment_instance = AppointmentModel.objects.get(id=appointment_id)
+                appointment_instance.availability=False
+                appointment_instance.save()
                 book_appointment = {
                     "patient": patient_id,
                     "appointment": appointment_id,
