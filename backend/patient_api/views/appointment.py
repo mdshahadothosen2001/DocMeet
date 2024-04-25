@@ -24,6 +24,6 @@ class AppointmentListView(APIView):
             return Response(appointment_list, status=HTTP_200_OK)
 
 
-        appointments =AppointmentModel.objects.all()
+        appointments =AppointmentModel.objects.filter(availability=True)
         serializer = AppointmentListSerializer(appointments, many=True)
         return Response(serializer.data, status=HTTP_200_OK)
