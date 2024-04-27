@@ -24,6 +24,8 @@ urlpatterns = [
     path(route="profile/", view=PatientProfileView.as_view(), name="patient_profile"),
     # PATCH: localhost:8000/api/patient/profile/update/
     path(route="profile/update/", view=PatientUpdateProfileView.as_view(), name="patient_profile_update"),
+    # PATCH: localhost:8000/api/patient/profile-info-pdate/
+    path(route="profile-info-pdate/", view=PatientUpdateProfileView.as_view(), name="patient_profile_update"),
     # GET: localhost:8000/api/patient/doctor-list/
     path(route="doctor-list/", view=DoctorListView.as_view(), name="doctor_list"),
     # GET: localhost:8000/api/patient/specialization-list/
