@@ -11,7 +11,9 @@ class TodayDateView(APIView):
     permission_classes = [AllowAny]
 
     def get(self, request):
+        now = datetime.datetime.now()
         date = {
-            "date":datetime.date.today()
+            "date": now.date(),
+            "name": now.strftime("%A")
         }
         return Response(date, status=HTTP_200_OK)
