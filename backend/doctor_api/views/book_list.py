@@ -4,6 +4,7 @@ from rest_framework import status
 
 from book_appointment.models import BookAppointmentModel
 from utils.custom_permission import IsDoctor
+from utils.utils import tokenValidation
 from ..serializers.book_list import BookAppointmentListSerializer
 
 
@@ -11,6 +12,7 @@ class BookAppointmentListView(APIView):
     permission_classes = [IsDoctor]
 
     def get(self, request):
-        books =BookAppointmentModel.objects.all()
+        doctor =  tokenValidation(request)["id"]
+        books =BookAppointmentModel.objects.filter(appointment__doctor=doctor)
         serializer = BookAppointmentListSerializer(books, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
