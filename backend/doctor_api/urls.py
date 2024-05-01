@@ -12,6 +12,7 @@ from .views.book_confirm import BookConfirmView
 from .views.book_delete import BookDeleteView
 from .views.profile_update import DoctorUpdateProfileView
 from .views.doctor_detail import DoctorDetailForPatient
+from .views.patient_list import PatientListView
 
 
 
@@ -40,4 +41,6 @@ urlpatterns = [
     path(route="book-delete/<int:pk>/", view=BookDeleteView.as_view(), name="book_delete"),
     # GETT: localhost:8000/api/doctor/detail/
     path(route="detail/", view=DoctorDetailForPatient.as_view(), name="doctor_detail_for_patient"),
+    # GETT: localhost:8000/api/doctor/patient-list/
+    path(route="patient-list/", view=PatientListView.as_view(), name="patient-list"),
 ]
