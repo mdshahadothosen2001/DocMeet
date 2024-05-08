@@ -1,8 +1,12 @@
+from django.shortcuts import get_object_or_404
+
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.response import Response
 
 from datetime import datetime
+
+from user.models import UserAccount
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -39,6 +43,8 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 
     def post(self, request, *args, **kwargs):
         """Used to return access token and refresh token"""
+
+        doctor = get_object_or_404(UserAccount, phone_number=request.data.get("phone_number"), is_doctor=True)
 
         response = super().post(request, *args, **kwargs)
         access_token = str(response.data["access"])
