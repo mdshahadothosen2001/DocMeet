@@ -12,21 +12,7 @@ class PatientListView(APIView):
     permission_classes = [IsDoctor]
 
     def get(self, request):
-        doctor =  tokenValidation(request)["id"]
-        patients =BookAppointmentModel.objects.filter(appointment__doctor=doctor, is_complete=True)
-        
-        serializer = PatienttListSerializer(patients, many=True)
-        unique_patients = self.get_unique_patients(serializer.data)
-        return Response(unique_patients, status=status.HTTP_200_OK)
-    
-    def get_unique_patients(self, data):
-        unique_ids = set()
-        unique_data = []
-        
-        for patient in data:
-            patient_data = dict(patient)
-            if patient_data["patient"]['id'] not in unique_ids:
-                unique_data.append(patient_data)
-                unique_ids.add(patient_data["patient"]['id'])
-        
-        return unique_data
+        doctor_id = tokenValidation(request)["id"]
+        appointments = BookAppointmentModel.objects.filter(appointment__doctor=doctor_id, is_complete=True, is_active=False)
+        serializer = PatienttListSerializer(appointments, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

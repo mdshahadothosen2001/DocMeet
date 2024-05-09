@@ -9,9 +9,14 @@ class BookAppointmentAdmin(admin.ModelAdmin):
         "patient",
         "appointment",
         "is_complete",
+        "is_active",
     )
-    list_display_links = ("is_complete",)
-    search_fields = ("is_complete",)
+    list_display_links = (
+        "patient",
+        "appointment",
+        "is_complete",
+    )
+    search_fields = ("is_complete", "is_active",)
     list_per_page = 25
 
 
