@@ -7,7 +7,6 @@ from rest_framework.permissions import AllowAny
 
 from appointment.models import AppointmentModel
 from user.models import Doctor
-from specialization.models import SpecializationModel
 from ..serializers.appointment import AppointmentListSerializer
 
 
@@ -15,18 +14,21 @@ class AppointmentListView(APIView):
     permission_classes = [AllowAny]
 
     def get(self, request):
-        specialized_id = request.query_params.get("id")
-        doctors = Doctor.objects.values()
-        if specialized_id:
-            specialization = get_object_or_404(SpecializationModel, id=specialized_id)
-            if specialization.name not in ["all", "All", "ALL"]:
-                doctors = doctors.filter(specialization=specialized_id)
-                appointment_list = []
-                for doctor in doctors:
-                    appointments =AppointmentModel.objects.filter(doctor=doctor.get("id"))
-                    serializer = AppointmentListSerializer(appointments, many=True)
-                    appointment_list += serializer.data
-                return Response(appointment_list, status=HTTP_200_OK)
+        specialization_id = request.query_params.get("id")
+        if specialization_id is None:
+            specialization_id = request.query_params.get("specialization_id")
+        doctor_id = request.query_params.get("doctor_id")
+
+        if doctor_id:
+            appointments =AppointmentModel.objects.filter(doctor=doctor_id, availability=True)
+            serializer = AppointmentListSerializer(appointments, many=True)
+            return Response(serializer.data, status=HTTP_200_OK)
+
+        if specialization_id:
+            doctor = get_object_or_404(Doctor, specialization=specialization_id)
+            appointments =AppointmentModel.objects.filter(doctor=doctor.id, availability=True)
+            serializer = AppointmentListSerializer(appointments, many=True)
+            return Response(serializer.data, status=HTTP_200_OK)
 
 
         appointments =AppointmentModel.objects.filter(availability=True)

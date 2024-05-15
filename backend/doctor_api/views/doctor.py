@@ -1,14 +1,14 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import AllowAny
 
 from user.models import Doctor
-from utils.custom_permission import IsDoctor
 from ..serializers.doctor import DoctorListSerializer
 
 
 class DoctorListView(APIView):
-    permission_classes = [IsDoctor]
+    permission_classes = [AllowAny]
 
     def validate_parameter(self, id):
         if id:
