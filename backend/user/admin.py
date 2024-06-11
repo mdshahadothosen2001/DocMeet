@@ -88,6 +88,7 @@ class DoctorAdmin(admin.ModelAdmin):
         "email",
         "first_name",
         "last_name",
+        "specialization",
         "gender",
         "marital_status",
         "emergency_contact",
