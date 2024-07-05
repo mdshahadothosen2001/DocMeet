@@ -52,9 +52,8 @@ class BookConfirmView(APIView):
                             Thank you for choosing our services. We look forward to seeing you.
 
                             Best regards,
-
-                            [Your Clinic/Hospital Name]
-                            [Your Contact Information]"""
+                            DocMeet
+                            """
                 }
                 email_sent = requests.post(api_url, data=payload)
             serializer =  BookConfirmSerializer(instance=book_instance, data={"is_complete":True})
