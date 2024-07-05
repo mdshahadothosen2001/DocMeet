@@ -44,7 +44,7 @@ class BookConfirmView(APIView):
                             - Day: {appointment_day}
                             - Date: {appointment_date}
                             - Time: {appointment_time}
-                            - Doctor: Dr. {doctor_first_name} {doctor_first_name}
+                            - Doctor: Dr. {doctor_first_name} {doctor_last_name}
                             - Location: DocMeet
 
                             If you have any questions or need to reschedule, please do not hesitate to contact us at [Contact Information].
