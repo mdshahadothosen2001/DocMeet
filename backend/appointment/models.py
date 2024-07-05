@@ -14,7 +14,7 @@ class AppointmentModel(TimeStamp):
     availability = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.day
+        return f"{self.day} {self.doctor}"
 
     class Meta:
         verbose_name = "Appointment"

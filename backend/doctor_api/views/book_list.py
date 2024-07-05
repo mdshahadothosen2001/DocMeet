@@ -13,6 +13,6 @@ class BookAppointmentListView(APIView):
 
     def get(self, request):
         doctor =  tokenValidation(request)["id"]
-        books =BookAppointmentModel.objects.filter(appointment__doctor=doctor, is_complete=True, is_active=True)
+        books =BookAppointmentModel.objects.filter(appointment__doctor=doctor, is_active=True)
         serializer = BookAppointmentListSerializer(books, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
